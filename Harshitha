@@ -1,0 +1,118 @@
+import time
+
+def intro():
+    print("Welcome to the Text Adventure Game!")
+    time.sleep(1)
+    print("You find yourself standing at the entrance of a mysterious cave.")
+    time.sleep(1)
+    print("What do you want to do?")
+
+def choose_path():
+    print("1. Enter the cave.")
+    print("2. Look around outside.")
+
+    choice = input("Enter your choice (1 or 2): ")
+
+    if choice == "1":
+        inside_cave()
+    elif choice == "2":
+        outside_cave()
+    else:
+        print("Invalid choice. Please try again.")
+        choose_path()
+
+def inside_cave():
+    print("You cautiously enter the dark cave.")
+    time.sleep(1)
+    print("As you move deeper, you hear strange noises.")
+    time.sleep(1)
+    print("What do you want to do now?")
+
+    print("1. Keep going deeper.")
+    print("2. Turn back to the entrance.")
+
+    choice = input("Enter your choice (1 or 2): ")
+
+    if choice == "1":
+        treasure_room()
+    elif choice == "2":
+        print("You decide to leave the cave.")
+        game_over("You exit the cave safely.")
+    else:
+        print("Invalid choice. Please try again.")
+        inside_cave()
+
+def outside_cave():
+    print("You look around outside the cave.")
+    time.sleep(1)
+    print("There's a path leading to a forest and another going towards a mountain.")
+    time.sleep(1)
+    print("Which path will you take?")
+
+    print("1. Follow the path to the forest.")
+    print("2. Follow the path to the mountain.")
+
+    choice = input("Enter your choice (1 or 2): ")
+
+    if choice == "1":
+        forest_path()
+    elif choice == "2":
+        mountain_path()
+    else:
+        print("Invalid choice. Please try again.")
+        outside_cave()
+
+def treasure_room():
+    print("You reach a room filled with treasure!")
+    time.sleep(1)
+    print("Congratulations, you've found the treasure. You win!")
+
+def forest_path():
+    print("You follow the path to the forest.")
+    time.sleep(1)
+    print("The forest is dense, and you hear the sound of wild animals.")
+    time.sleep(1)
+    print("What do you want to do now?")
+
+    print("1. Continue through the forest.")
+    print("2. Go back to the cave entrance.")
+
+    choice = input("Enter your choice (1 or 2): ")
+
+    if choice == "1":
+        game_over("You get lost in the forest.")
+    elif choice == "2":
+        print("You decide to go back to the cave entrance.")
+        choose_path()
+    else:
+        print("Invalid choice. Please try again.")
+        forest_path()
+
+def mountain_path():
+    print("You follow the path to the mountain.")
+    time.sleep(1)
+    print("The air gets thinner as you climb higher.")
+    time.sleep(1)
+    print("What do you want to do now?")
+
+    print("1. Reach the mountain summit.")
+    print("2. Descend and return to the cave entrance.")
+
+    choice = input("Enter your choice (1 or 2): ")
+
+    if choice == "1":
+        game_over("You reach the summit and enjoy the breathtaking view.")
+    elif choice == "2":
+        print("You decide to descend and return to the cave entrance.")
+        choose_path()
+    else:
+        print("Invalid choice. Please try again.")
+        mountain_path()
+
+def game_over(message):
+    print(message)
+    print("Game over.")
+
+if __name__ == "__main__":
+    intro()
+    choose_path()
