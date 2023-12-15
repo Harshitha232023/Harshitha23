@@ -1,0 +1,33 @@
+def convert_currency(amount, from_currency, to_currency):
+    # Exchange rates (replace these with actual rates)
+    exchange_rates = {
+        'USD': {'EUR': 0.85, 'GBP': 0.74, 'JPY': 110.18},
+        'EUR': {'USD': 1.18, 'GBP': 0.88, 'JPY': 130.50},
+        'GBP': {'USD': 1.36, 'EUR': 1.14, 'JPY': 150.68},
+        'JPY': {'USD': 0.0091, 'EUR': 0.0077, 'GBP': 0.0066}
+    }
+
+    try:
+        # Convert the amount to the base currency (USD in this case)
+        base_amount = amount / exchange_rates[from_currency.upper()]
+
+        # Convert the amount to the target currency
+        target_amount = base_amount * exchange_rates[to_currency.upper()]
+
+        return target_amount
+
+    except KeyError:
+        return "Currency not supported."
+
+if __name__ == "__main__":
+    # Example usage
+    amount_to_convert = float(input("Enter the amount to convert: "))
+    from_currency = input("Enter the source currency (e.g., USD): ").upper()
+    to_currency = input("Enter the target currency (e.g., EUR): ").upper()
+
+    result = convert_currency(amount_to_convert, from_currency, to_currency)
+
+    if isinstance(result, float):
+        print(f"{amount_to_convert} {from_currency} is equal to {result:.2f} {to_currency}")
+    else:
+        print(result)
